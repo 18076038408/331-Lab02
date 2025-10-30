@@ -1,30 +1,40 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterLink, RouterView } from 'vue-router'
+// 使用 @ 符号指向 src 目录，确保路径正确
+import { useMessageStore } from './stores/message'
+import { storeToRefs } from 'pinia'
+
+const store = useMessageStore()
+const { message } = storeToRefs(store)
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="text-center font-sans text-gray-700 antialias">
+    <header>
+        <!-- 闪信显示区域 -->
+        <div id="flashMessage" class="animate-fade" v-if="message">
+          <h4>{{ message }}</h4>
+        </div>
+        <h1>Deploy with Vercel</h1>
+      <nav class="py-6">
+        <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" :to="{ name: 'event-list-view' }">Event</RouterLink> |
+        <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" :to="{ name: 'about' }">About</RouterLink>
+      </nav>
+    </header>
+    <RouterView />
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<style>
+/* Tailwind CSS is now used for layout styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+
+/* #flashMessage样式已移除，使用Tailwind CSS的animate-fade类代替 */
+
+/* nav样式已通过Tailwind类应用 */
+/* 保留最小样式以确保兼容性 */
 </style>
