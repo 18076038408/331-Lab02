@@ -5,12 +5,12 @@ import router from './router'
 import './assets/style.css' // 引入tailwind样式
 import 'nprogress/nprogress.css'
 import { inject } from '@vercel/analytics'
-inject()
+
 // 先创建应用实例
 const app = createApp(App)
 
 // 安装插件
-
+inject()
 app.use(createPinia())
 app.use(router)
 

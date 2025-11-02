@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import { SpeedInsights } from "@vercel/speed-insights/next"
+// 使用Vue版本的SpeedInsights
+import { SpeedInsights } from "@vercel/speed-insights/vue"
+// 使用 @ 符号指向 src 目录，确保路径正确
 import { useMessageStore } from './stores/message'
 import { storeToRefs } from 'pinia'
 
