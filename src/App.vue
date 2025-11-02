@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import { SpeedInsights } from '@vercel/speed-insights';
 // 使用 @ 符号指向 src 目录，确保路径正确
 import { useMessageStore } from './stores/message'
 import { storeToRefs } from 'pinia'
@@ -9,6 +10,7 @@ const { message } = storeToRefs(store)
 </script>
 
 <template>
+  <SpeedInsights />
   <div class="text-center font-sans text-gray-700 antialias">
     <header>
         <!-- 闪信显示区域 -->
